@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+main () {
+    case $1. in
+        patch.|release.|build.)
+            uv run bumpversion $1        || return $?
+            uv lock                      || return 101
+            git add uv.lock              || return 102
+            git commit --amend --no-edit || return 103
+            git push                     || return 104
+            git push --tags              || return 105
+            return
+            ;;
+    esac
+}
+
+main "$@" || {
+    my die $? "something bad happened in [./bump]"
+}

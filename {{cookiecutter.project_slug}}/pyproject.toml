@@ -6,6 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "{{cookiecutter.project_slug}}"
 version = "{{cookiecutter.version}}"
 description = "{{cookiecutter.project_short_description}}"
+requires-python = "{{ cookiecutter.requires_python }}"
 readme = "README.rst"
 authors = [
   {name = "{{cookiecutter.full_name}}", email = "{{cookiecutter.email}}"}
