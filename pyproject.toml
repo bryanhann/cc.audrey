@@ -1,0 +1,9 @@
+[project]
+name = "cc-audrey"
+version = "0.1.0"
+description = "A fork of https://github.com/audreyfeldroy/cookiecutter-pypackage."
+readme = "README.rst"
+requires-python = ">=3.12"
+dependencies = [
+    "bump2version>=1.0.1",
+]
