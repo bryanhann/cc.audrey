@@ -1,7 +1,9 @@
 {
+  "project_name": "tmp_xxx",
+  "github_deploy": "y",
+  "hook_bash": "Y",
   "full_name": "",
   "email": "",
-  "project_name": "",
   "requires_python": ">=3.12",
   "project_short_description": "Boilerplate {{ cookiecutter.project_name }}",
   "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
