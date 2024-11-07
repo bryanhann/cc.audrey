@@ -1,16 +1,25 @@
 #!/usr/bin/env bash
 
+bump () {
+    uv run bumpversion $1        || return $?
+    uv lock                      || return 101
+    git add uv.lock              || return 102
+    git commit --amend --no-edit || return 103
+    git push                     || return 104
+    git push --tags              || return 105
+    return
+}
+
 main () {
     case $1. in
-        patch.|release.|build.)
-            uv run bumpversion $1        || return $?
-            uv lock                      || return 101
-            git add uv.lock              || return 102
-            git commit --amend --no-edit || return 103
-            git push                     || return 104
-            git push --tags              || return 105
-            return
+        release.|build.)
+            bump $1
             ;;
+        patch.|minor.|major.)
+            bump $1
+            # It seems that [bump build] balks after this
+            # if we are in a release. So do a release.
+            bump release
     esac
 }
 
