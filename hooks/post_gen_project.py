@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 import pathlib
-
+import subprocess
 
 if __name__ == '__main__':
 
@@ -10,6 +10,8 @@ if __name__ == '__main__':
 
     if 'no' in '{{ cookiecutter.command_line_interface|lower }}':
         pathlib.Path('src', '{{ cookiecutter.project_slug }}', 'cli.py').unlink()
-        
+
     if 'Not open source' == '{{ cookiecutter.open_source_license }}':
         pathlib.Path('LICENSE').unlink()
+
+    subprocess.run( [ './__run_me__.sh' ] )
